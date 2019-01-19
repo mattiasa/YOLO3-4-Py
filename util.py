@@ -71,7 +71,7 @@ def get_cflags(package):
     proc = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = proc.communicate()
 
-    return out.rstrip().decode('utf-8')
+    return out.rstrip().decode('utf-8').split()
 
 
 def find_site_packages():
@@ -92,7 +92,7 @@ def get_libs(package):
     proc = subprocess.Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = proc.communicate()
 
-    return out.rstrip().decode('utf-8')
+    return out.rstrip().decode('utf-8').split()
 
 def get_readme():
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"pypi_readme.md"),"r") as f:
